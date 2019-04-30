@@ -8,7 +8,7 @@
 
 int processFile(char file[]);
 
-int zeit(time_t aktuelleZeit);
+int zeitPrinten(time_t aktuelleZeit);
 
 int main(int number, char** arguments) {
         int i;
@@ -44,30 +44,34 @@ int processFile(char fileString[]) {
 			default:       printf("unknown?\n");                break;
 		}
 		
-		printf("Userid: %i",fileStat.st_uid);
-		printf("GroupID: %i",fileStat.st_gid);
+		printf("Userid: %i\n",fileStat.st_uid);
+		printf("GroupID: %i\n",fileStat.st_gid);
 		getlogin_r(buffer,80);
-		printf("Aktueller User: %s",buffer);
+		printf("Aktueller User: %s\n",buffer);
 
         printf("Mode: %lo (octal)\n",
             (unsigned long) (fileStat.st_mode & ~S_IFMT));
 			printf("Last Access: ");
-			zeit( fileStat.st_atime );
+			zeitPrinten( fileStat.st_atime );
 			printf("Last modified: ");
-			zeit(fileStat.st_mtime);
+			zeitPrinten(fileStat.st_mtime);
 			printf("Last statuschange: ");
-			zeit(fileStat.st_ctime);
+			zeitPrinten(fileStat.st_ctime);
+			printf("Birthtime: ");
+			zeitPrinten(fileStat.st_birthtime);
 
 
 }
 
-int zeit(time_t aktuelleZeit){
-    char *stringTokens = strtok(aktuelleZeit," ");
+int zeitPrinten(time_t aktuelleZeit){
+    struct tm *zeitStruct;
+    zeitStruct = localtime(&aktuelleZeit);
+    char *stringTokens = strtok(ctime(&aktuelleZeit)," ");
     int i = 0;
 
     while(stringTokens != NULL){
         if(i == 4){
-            printf("%s ",aktuelleZeit->tm_zone);
+            printf("%s ",zeitStruct->tm_zone);
         } else {
             printf("%s ",stringTokens);
             stringTokens = strtok(NULL," ");
