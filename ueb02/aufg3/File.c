@@ -24,6 +24,7 @@ int processFile(char fileString[]) {
         int file = 0;
         file = open(fileString, O_RDONLY);
         struct stat fileStat;
+		char buffer[80];
 
         int i = lstat(fileString, &fileStat);
 
@@ -31,10 +32,27 @@ int processFile(char fileString[]) {
                         printf("Diese Datei existiert nicht!");
                         return -1;
                 }
+				
+		switch (fileStat.st_mode & S_IFMT) {
+			case S_IFBLK:  printf("block device\n");            break;
+			case S_IFCHR:  printf("character device\n");        break;
+			case S_IFDIR:  printf("directory\n");               break;
+			case S_IFIFO:  printf("FIFO/pipe\n");               break;
+			case S_IFLNK:  printf("symlink\n");                 break;
+			case S_IFREG:  printf("regular file\n");            break;
+			case S_IFSOCK: printf("socket\n");                  break;
+			default:       printf("unknown?\n");                break;
+		}
+		
+		printf("%i",fileStat.st_uid);
+		printf("%i",fileStat.st_gid);
+		printf("%s",getlogin_r(&buffer,80);
 
         printf("Mode:                     %lo (octal)\n",
-            (unsigned long) fileStat.st_mode);
+            (unsigned long) (fileStat.st_mode & ~S_IFMT));
                 zeit( fileStat.st_atime );
+
+
 }
 
 int zeit(time_t aktuelleZeit){
