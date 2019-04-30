@@ -62,16 +62,12 @@ int processFile(char fileString[]) {
 }
 
 int zeit(time_t aktuelleZeit){
-    struct tm *zeitStruct;
-    zeitStruct = localtime(&aktuelleZeit);
-
-    time(&aktuelleZeit);
-    char *stringTokens = strtok(ctime(&aktuelleZeit)," ");
+    char *stringTokens = strtok(aktuelleZeit," ");
     int i = 0;
 
     while(stringTokens != NULL){
         if(i == 4){
-            printf("%s ",zeitStruct->tm_zone);
+            printf("%s ",aktuelleZeit->tm_zone);
         } else {
             printf("%s ",stringTokens);
             stringTokens = strtok(NULL," ");
