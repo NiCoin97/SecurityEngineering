@@ -1,0 +1,60 @@
+mv:
+
+a) Verschieben, Umbenennen von Dateien
+b) /bin/mv
+c) mv alterName neuerName
+d) rename()
+
+chmod:
+a) Ändern der Rechte von Dateien
+b) /bin/chmod
+c) chmod 777 datei
+d) fchmodat()
+
+chown:
+a) Ändern des Benutzers / der Gruppe einer Datei
+b) /usr/sbin/chown
+c) chown root datei
+d) fchownat()
+
+mkdir:
+a) Erstellt Verzeichnisse
+b) /bin/mkdir
+c) mkdir ordner
+d) mkdir()
+
+rmdir: 
+a) Löscht Verzeichnisse
+b) /bin/rmdir
+c) rmdir ordner
+d) rmdir()
+
+kill:
+a) Laufende Prozesse beenden oder Signale an sie versenden
+b) /bin/kill
+c) kill 256
+d) kill()
+
+ln: 
+a) Links zu Dateien erstellen (Hard- /Softlinks)
+b) /bin/ln
+c) ln datei dateiLink
+d) lstat(), linkat()
+
+sleep:
+a) Unterbricht laufende Ausführung für eine bestimmte Zeit
+b) /bin/sleep
+c) sleep 3
+d) nanosleep()
+
+wget:
+a) Kann Dateien von FTP / HTTP Servern herunterladen, fungiert als Downloadmanager
+b) /usr/local/bin/wget
+c) wget https://www.speedtestx.de/testfiles/data_1mb.test
+d) socket(), connect()
+
+
+
+
+
+
