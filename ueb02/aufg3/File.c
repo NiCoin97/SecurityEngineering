@@ -44,11 +44,11 @@ int processFile(char fileString[]) {
 			default:       printf("unknown?\n");                break;
 		}
 		
-		printf("%i",fileStat.st_uid);
-		printf("%i",fileStat.st_gid);
-		printf("%s",getlogin_r(&buffer,80);
+		printf("Userid: %i",fileStat.st_uid);
+		printf("GroupID: %i",fileStat.st_gid);
+		printf("Aktueller User: %s",getlogin_r(&buffer,80);
 
-        printf("Mode:                     %lo (octal)\n",
+        printf("Mode: %lo (octal)\n",
             (unsigned long) (fileStat.st_mode & ~S_IFMT));
                 zeit( fileStat.st_atime );
 
