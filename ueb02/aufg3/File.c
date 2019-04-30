@@ -46,11 +46,17 @@ int processFile(char fileString[]) {
 		
 		printf("Userid: %i",fileStat.st_uid);
 		printf("GroupID: %i",fileStat.st_gid);
-		printf("Aktueller User: %s",getlogin_r(&buffer,80);
+		getlogin_r(buffer,80);
+		printf("Aktueller User: %s",buffer);
 
         printf("Mode: %lo (octal)\n",
             (unsigned long) (fileStat.st_mode & ~S_IFMT));
-                zeit( fileStat.st_atime );
+			printf("Last Access: ");
+			zeit( fileStat.st_atime );
+			printf("Last modified: ");
+			zeit(fileStat.st_mtime);
+			printf("Last statuschange: ");
+			zeit(fileStat.st_ctime);
 
 
 }
