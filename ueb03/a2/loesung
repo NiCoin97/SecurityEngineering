@@ -1,0 +1,11 @@
+Nur Tabelle:
+
+head -n 615 fussball-tabelle.html | tail -n 401 > tabelle.html
+
+Nur noch Fußballvereine und ihre Platzierung:
+
+cat tabelle.html | head -n 387 |  grep ";[1-9]\.\|>1[0-8]\.\|title=\"" | grep "<td" | sed -e "s:<td style=\"text-align\:center\;\">&#x2002\;::g" -e "s:<td style=\"text-align\:center\;\">::g" -e "s:<td .*\"::g" -e "s:>::g" -e "s:</a.*::g" >nurTabelle
+
+Nur Staaten ausgeben:
+
+cat countries | grep "span id" | sed -e "s:.*id=\"::g" -e "s:\">.*::" -e "s:cite.*reference::g" > nurStaaten

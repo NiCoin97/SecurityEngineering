@@ -1,0 +1,8 @@
+b.) 
+Verwendete Kamera: Canon EOS 450D
+Zeitpunkt der Aufnahme: 2015:08:05 14:34:37
+
+Offset in Hexadezimalsystem: strings -t x hamburg.jpg
+
+Mit hexdump ausgeben: strings -t x  hamburg.jpg | hexdump -C
+
